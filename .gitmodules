@@ -1,0 +1,3 @@
+[submodule "backend_marketplace_telegram_bots"]
+	path = backend_marketplace_telegram_bots
+	url = https://github.com/p-artyom/backend_marketplace_telegram_bots

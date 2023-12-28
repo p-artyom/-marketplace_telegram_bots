@@ -1,0 +1,29 @@
+version: '3'
+
+volumes:
+  pg_data:
+  static:
+  media:
+
+services:
+  postgres:
+    image: postgres:14
+    env_file: .env
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+  backend:
+    image: <your_login>/marketplace_backend
+    env_file: .env
+    depends_on:
+      - postgres
+    volumes:
+      - static:/backend_static
+      - media:/app/media
+  nginx:
+    image: <your_login>/marketplace_nginx
+    env_file: .env
+    ports:
+      - 8000:80
+    volumes:
+      - static:/static
+      - media:/app/media
